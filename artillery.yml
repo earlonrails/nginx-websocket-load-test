@@ -1,0 +1,15 @@
+config:
+  target: "TEST_URL"
+  phases:
+    - duration: 3600
+      arrivalRate: 50
+  ws:
+    rejectUnauthorized: false
+scenarios:
+  - engine: "ws"
+    flow:
+      - loop:
+          - send: "Hello"
+          - think: 2
+          - send: "World"
+        count: 50

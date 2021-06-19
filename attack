@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+sed -i "s|TEST_URL|${TEST_URL}|g" /app/config.yml
+
+artillery run /app/config.yml -o "/app/$(date +%Y-%m-%dT%H-%M-%SZ)-results.json"
+
+# sleep forever so you can download the results
+if [[ "${LOOP}" != "false" ]]; then
+  while true; do  sleep 10; done
+fi
